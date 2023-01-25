@@ -1,0 +1,13 @@
+def hillClimbing(tsp):
+    currentSolution = randomSolution(tsp)
+    currentRouteLength = routeLength(tsp, currentSolution)
+    neighbours = getNeighbours(currentSolution)
+    bestNeighbour, bestNeighbourRouteLength = getBestNeighbour(tsp, neighbours)
+
+    while bestNeighbourRouteLength < currentRouteLength:
+        currentSolution = bestNeighbour
+        currentRouteLength = bestNeighbourRouteLength
+        neighbours = getNeighbours(currentSolution)
+        bestNeighbour, bestNeighbourRouteLength = getBestNeighbour(tsp, neighbours)
+
+    return currentSolution, currentRouteLength
