@@ -1,0 +1,19 @@
+def UCS(graph, src, dest):
+    minDistances, predecessor = dijkstra(graph, src)
+    
+    path = []
+    currentNode = dest
+    while currentNode != src:
+        if currentNode not in predecessor:
+            print("Path not reachable")
+            break
+        else:
+            path.insert(0, currentNode)
+            currentNode = predecessor[currentNode]
+    path.insert(0, src)
+    
+    if dest in minDistances and minDistances[dest] != float("inf"):
+        print('Shortest distance is ' + str(minDistances[dest]))
+        print('And the path is ' + str(path))
+        
+UCS(graph, 'a', 'd')
